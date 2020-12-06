@@ -1,0 +1,17 @@
+# 🎨 http://editorconfig.org
+
+root = true
+
+[*]
+# 字符集编码格式
+charset = utf-8
+# 换行符
+end_of_line = lf
+# 缩进风格
+indent_style = space
+# 缩进大小
+indent_size = 2
+# 是否删除行尾的空格
+trim_trailing_whitespace = true
+# 是否在文件的最后插入一个空行
+insert_final_newline = true
