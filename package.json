@@ -17,7 +17,7 @@
     "test": ""
   },
   "author": "TimeAway",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "husky": "^4.3.4",
     "less": "^3.12.2",
