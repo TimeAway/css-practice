@@ -1,0 +1,15 @@
+// Released v3.5.0
+// 可通过键获取到对应的值
+@sizes: {
+  mobile: 320px;
+  tablet: 768px;
+  desktop: 1024px;
+};
+
+.navbar {
+  display: block;
+
+  @media (min-width: @sizes[tablet]) {
+    display: inline-block;
+  }
+}

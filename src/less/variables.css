@@ -1,6 +1,44 @@
-#header {
-  display: inline;
-  color: #6c94be;
-  font-size: 13px;
-  background-color: #fff;
+a,
+.link {
+  color: #428bca;
+}
+a:hover {
+  color: #3071a9;
+}
+.widget {
+  color: #fff;
+  background: #428bca;
+}
+.banner {
+  margin: 0 auto;
+  font-weight: bold;
+  line-height: 40px;
+}
+body {
+  color: #666;
+  background: url('../img/white-sand.png');
+}
+.widget1 {
+  color: #0ee;
+  background-color: #999;
+}
+.section .element {
+  color: green;
+}
+.lazy-eval {
+  width: 10%;
+}
+.class {
+  width: 1px;
+}
+.class .brass {
+  width: 3px;
+}
+.header {
+  --color: white;
+  color: var(--color);
+}
+.widget2 {
+  color: #efefef;
+  background-color: #efefef;
 }

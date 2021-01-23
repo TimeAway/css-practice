@@ -1,9 +1,98 @@
-@nice-blue: #5b83ad;
-@light-blue: @nice-blue + #111;
+// 一、变量
+// 将变量提取出来，可以使代码更易于维护
+@link-color: #428bca;
+@link-color-hover: darken(@link-color, 10%);
 
-#header {
-  display: inline;
-  color: @light-blue;
-  font-size: 13px;
-  background-color: #fff;
+a,
+.link {
+  color: @link-color;
+}
+
+a:hover {
+  color: @link-color-hover;
+}
+
+.widget {
+  color: #fff;
+  background: @link-color;
+}
+
+// 二、变量插入
+// 1. 变量作为选择器，V1.4
+@my-selector: banner;
+
+.@{my-selector} {
+  margin: 0 auto;
+  font-weight: bold;
+  line-height: 40px;
+}
+
+// 2. 变量作为 URLs 路径，V1.4
+@images: '../img';
+
+body {
+  color: #666;
+  background: url('@{images}/white-sand.png');
+}
+
+// 3. 变量作为导入声明, V1.4
+@themes: '../../src/themes';
+
+// @import '@{themes}/tidal-wave.less';
+
+// 4. 变量作为属性名称，使用不多，V1.6
+@property: color;
+
+.widget1 {
+  @{property}: #0ee;
+  background-@{property}: #999;
+}
+
+// 三、变量的变量
+// 可以使用已定义的变量名称作为变量的值
+@primary: green;
+@secondary: blue;
+
+.section {
+  @color: primary;
+
+  .element {
+    color: @@color;
+  }
+}
+
+// 四、懒运算
+// 1. 变量可以在使用后定义
+.lazy-eval {
+  width: @var;
+}
+
+@var: @a;
+@a: 10%;
+
+// 2. 变量被多次定义，会使用最后一次定义的值，从其当前范围依次往上查找
+@var1: 0;
+.class {
+  @var1: 1px;
+  .brass {
+    @var1: 2px;
+
+    width: @var1;
+    @var1: 3px;
+  }
+
+  width: @var1;
+}
+
+.header {
+  --color: white;
+
+  color: var(--color);
+}
+
+// 五、属性作为变量，V3.0.0
+// 通过 $prop 语法，可直接引用某个属性的值
+.widget2 {
+  color: #efefef;
+  background-color: $color;
 }

@@ -18,6 +18,13 @@ module.exports = {
   rules: {
     // 开启无作用属性检查
     'plugin/declaration-block-no-ignored-properties': true,
+    // 取消注释前必须空一行的规则
+    'comment-empty-line-before': null,
+    // 关闭此规则，因为会导致如下情况报错
+    // .link { & { ... } }
+    'no-descending-specificity': null,
+    // 取消声明后必须空一行的规则
+    'declaration-empty-line-before': null,
   },
   ignoreFiles: ['node_modules'],
 };

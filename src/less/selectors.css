@@ -1,0 +1,71 @@
+a {
+  color: blue;
+}
+a:hover {
+  color: yellow;
+}
+.button-ok {
+  font-size: 12px;
+}
+.button-cancel {
+  font-size: 14px;
+}
+.button-custom {
+  font-size: 16px;
+}
+.link + .link {
+  color: red;
+}
+.link .link {
+  color: green;
+}
+.link.link {
+  color: blue;
+}
+.link,
+.linkish {
+  color: cyan;
+}
+.grand .parent > .grand .parent {
+  color: red;
+}
+.grand .parent .grand .parent {
+  color: green;
+}
+.grand .parent.grand .parent {
+  color: blue;
+}
+.grand .parent,
+.grand .parentish {
+  color: cyan;
+}
+.header .menu {
+  border-radius: 5px;
+}
+.no-border-radius .header .menu {
+  font-size: 12px;
+}
+p,
+a,
+ul,
+li {
+  border-top: 2px dotted #366;
+}
+p + p,
+p + a,
+p + ul,
+p + li,
+a + p,
+a + a,
+a + ul,
+a + li,
+ul + p,
+ul + a,
+ul + ul,
+ul + li,
+li + p,
+li + a,
+li + ul,
+li + li {
+  border-top: 0;
+}

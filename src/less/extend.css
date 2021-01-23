@@ -1,0 +1,40 @@
+.inline,
+nav ul {
+  color: red;
+}
+nav ul {
+  background-color: blue;
+}
+.a {
+  width: 100px;
+}
+.b,
+.a {
+  height: 100px;
+}
+.g,
+.f {
+  font-size: 12px;
+}
+.h,
+.f {
+  color: blue;
+}
+.bucket tr,
+.some-class {
+  color: blue;
+}
+[title='identifier'],
+.noQuote {
+  color: blue;
+}
+.a.b.test,
+.test.c,
+.a.b.replacement,
+.replacement.c {
+  color: orange;
+}
+.test:hover,
+.replacement:hover {
+  color: green;
+}

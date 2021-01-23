@@ -1,0 +1,26 @@
+// 1. 在 less 中使用 @import，如果不带后缀，则默认是 .less 文件
+
+// @import "foo";      // foo.less is imported
+// @import "foo.less"; // foo.less is imported
+// @import "foo.php";  // foo.php imported as a Less file
+// @import "foo.css";  // statement left in place, as-is
+
+// 2. 在 css 中，@import 必须在文件顶部，而 less 中则可以放置在任何地方
+
+// 3. import 选项
+// 语法规则：@import (keyword) "filename";
+// 3.1 reference: 表示使用 less 文件，但是不输出它
+// @import (reference) "foo.less";
+// 3.2 inline: 输出该文件，但是不处理它
+// @import (inline) "not-less-compatible.css";
+// 3.3 less: 不管文件拓展名是什么，都把它作为一个 less 文件
+// @import (less) "foo.css";
+// 3.4 css: 不管文件拓展名是什么，都把它作为一个 css 文件
+// @import (css) "foo.less";
+// 3.5 once: 只包含文件一次，默认行为
+// @import (once) "foo.less";
+// @import (once) "foo.less"; 此次导入会被忽略
+// 3.6 multiple: 可以多次包含该文件
+// @import (multiple) "foo.less";
+// @import (multiple) "foo.less";
+// 3.7 optional: 表示找不到该文件，仍然继续编辑

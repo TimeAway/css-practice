@@ -1,0 +1,208 @@
+// 将已存在的属性混合到现有属性中
+.a,
+#b {
+  color: red;
+}
+.mixin-class {
+  .a();
+}
+.mixin-id {
+  #b();
+}
+
+// 使用圆括号混合，使用圆括号创建的混合不会输出到css中
+.my-mixin {
+  color: black;
+}
+.my-other-mixin() {
+  background-color: #3071a9;
+}
+.class {
+  .my-mixin();
+  .my-other-mixin();
+}
+
+// 带有选择器的混合
+// 如下mixin中的 & 就是调用它的选择器
+.my-hover-mixin() {
+  &:hover {
+    border: 1px solid red;
+  }
+}
+button {
+  .my-hover-mixin();
+}
+
+// 命名空间
+// outer 内的不会被输出
+#outer() {
+  .inner {
+    color: red;
+  }
+}
+.c {
+  #outer.inner();
+}
+
+// 带有参数的混合，并有默认值
+.border-radius(@radius: 5px) {
+  -webkit-border-radius: @radius;
+  -moz-border-radius: @radius;
+  border-radius: @radius;
+}
+#header {
+  .border-radius();
+}
+#header1 {
+  .border-radius(10px);
+}
+
+// 多参数混合
+.multiple-params-mixin(@color; @padding: 2px) {
+  padding: @padding;
+  color: @color;
+}
+#header2 {
+  .multiple-params-mixin(#f2f2f2);
+}
+#header3 {
+  .multiple-params-mixin(#f2f2f2, 3px);
+}
+
+// @arguments 变量，包含了所有的参数
+.box-shadow(@x: 0; @y: 0; @blur: 1px; @color: #000) {
+  -webkit-box-shadow: @arguments;
+  -moz-box-shadow: @arguments;
+  box-shadow: @arguments;
+}
+.big-block {
+  .box-shadow(2px; 5px);
+}
+
+// @rest... 变量，表示剩余的所有参数
+.box-shadow1(@font-size; @rest...) {
+  font-size: @font-size;
+  -webkit-box-shadow: @rest;
+  -moz-box-shadow: @rest;
+  box-shadow: @rest;
+}
+.big-block1 {
+  .box-shadow1(12px; 2px; 5px; 1px; #121212);
+}
+
+// 模板匹配；
+// 比如有两个相同名称的mixin，但是样式不同，根据不同的条件会调用不同的mixin
+.mixins(dark; @color) {
+  color: darken(@color, 10%);
+}
+.mixins(light; @color) {
+  color: lighten(@color, 10%);
+}
+
+@switch: light; // 匹配到第二个
+.class1 {
+  .mixins(@switch; #888);
+}
+
+// 将 mixins 作为函数使用
+.average(@x, @y) {
+  @result: (@x + @y) / 2;
+}
+
+div {
+  padding: .average(16px, 50px) [ @result];
+  // padding: .average(16px, 50px)[]; // 不指定@result，将会获取所有值
+}
+
+// 将 mixin 作为局部变量
+
+.mixin() {
+  @width: 100%;
+  @height: 200px;
+}
+
+.caller {
+  .mixin();
+  width: @width;
+  height: @height;
+}
+
+// 循环 mixin
+.loop(@counter) when (@counter > 0) {
+  .loop((@counter - 1)); // next iteration
+  width: (10px * @counter); // code for each iteration
+}
+
+span {
+  .loop(5); // launch the loop
+}
+// 比如使用 loops 生成一个 css 网格样式
+.generate-columns(@n, @i: 1) when (@i =< @n) {
+  .column-@{i} {
+    width: (@i * 100% / @n);
+  }
+  .generate-columns(@n, (@i + 1));
+}
+
+.generate-columns(4);
+
+// Mixin Guards
+// 如下定义了三个mixin，如果调用mixin，最后一个一定会生成属性，其余
+// 两个则会根据条件是否成立返回
+.mixin(@a) when (lightness(@a) >= 50%) {
+  background-color: black;
+}
+.mixin(@a) when (lightness(@a) < 50%) {
+  background-color: white;
+}
+.mixin(@a) {
+  color: @a;
+}
+
+.class2 {
+  .mixin(#ddd);
+}
+.class3 {
+  .mixin(#555);
+}
+
+// 比较运算符：>, >=, =, =<, <
+// 逻辑运算符：and, not, 逗号(分别对应与、或、非)
+// and 相当与 &&
+.mixin(@a) when (isnumber(@a)) and (@a > 0) {
+  //...;
+}
+// , 相当于 ||
+.mixin(@a) when (@a > 10), (@a < -10) {
+  //...
+}
+// not 相当于 !
+.mixin(@b) when not (@b > 0) {
+  //...
+}
+
+// 类型校验函数: iscolor、isnumber、isstring、iskeyword、isurl
+// ispixel、ispercentage、isem、isunit
+.mixin(@a; @b: 0) when (isnumber(@b)) {
+  //...
+}
+.mixin(@a; @b: black) when (iscolor(@b)) {
+  //...
+}
+
+// mixin 返回值作为参数使用
+#theme.dark.navbar {
+  .colors(light) {
+    primary: purple;
+  }
+  .colors(dark) {
+    primary: black;
+    secondary: grey;
+  }
+}
+
+.navbar {
+  @colors: #theme.dark.navbar.colors(dark);
+  background: @colors[primary];
+  border: 1px solid @colors[secondary];
+}

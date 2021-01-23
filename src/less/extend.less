@@ -1,0 +1,74 @@
+// extend 是 less 的伪类，它会将选择器与其匹配引用的选择器组合在一起
+// 如下：nav ul 有一个单独的属性background-color，同时与inline都有一个color属性
+.inline {
+  color: red;
+}
+
+nav ul {
+  &:extend(.inline);
+  background-color: blue;
+}
+
+.a {
+  width: 100px;
+}
+.b {
+  height: 100px;
+}
+.a:extend(.b) {
+  //
+}
+// 等同于
+// .a {
+//  &:extend(.b);
+//}
+
+// 引用多个样式，可以通过 , 隔开，如下
+.g {
+  font-size: 12px;
+}
+.h {
+  color: blue;
+}
+.f:extend(.g) {
+  //
+}
+.f:extend(.h) {
+  //
+}
+// 等同于
+// .f:extend(.g, .h) {}
+
+// 匹配嵌套选择器
+.bucket {
+  tr {
+    color: blue;
+  }
+}
+.some-class:extend(.bucket tr) {
+  //
+}
+
+// 匹配属性选择器
+[title='identifier'] {
+  color: blue;
+}
+
+.noQuote:extend([title='identifier']) {
+  //
+}
+
+// all 关键字，会匹配所有目标的选择器
+.a.b.test,
+.test.c {
+  color: orange;
+}
+.test {
+  &:hover {
+    color: green;
+  }
+}
+
+.replacement:extend(.test all) {
+  //
+}

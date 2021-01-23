@@ -1,0 +1,82 @@
+// 一、父类选择器基本使用，通过 & 表示
+a {
+  color: blue;
+  &:hover {
+    color: yellow;
+  }
+}
+
+.button {
+  &-ok {
+    font-size: 12px;
+  }
+  &-cancel {
+    font-size: 14px;
+  }
+  &-custom {
+    font-size: 16px;
+  }
+}
+
+// 二、多个 & 的使用
+.link {
+  & + & {
+    color: red;
+  }
+
+  & & {
+    color: green;
+  }
+
+  && {
+    color: blue;
+  }
+
+  &,
+  &ish {
+    color: cyan;
+  }
+}
+
+// & 表示的是所有的父类选择器，不只是最近的
+.grand {
+  .parent {
+    & > & {
+      color: red;
+    }
+
+    & & {
+      color: green;
+    }
+
+    && {
+      color: blue;
+    }
+
+    &,
+    &ish {
+      color: cyan;
+    }
+  }
+}
+
+// 三、改变 & 的使用顺序
+.header {
+  .menu {
+    border-radius: 5px;
+    .no-border-radius & {
+      font-size: 12px;
+    }
+  }
+}
+
+// 四、组合爆炸，组合出所有可能的情况
+p,
+a,
+ul,
+li {
+  border-top: 2px dotted #366;
+  & + & {
+    border-top: 0;
+  }
+}
