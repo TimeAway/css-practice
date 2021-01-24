@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>外边距合并</title>
+  <style>
+    p:nth-child(1){
+      margin-bottom: 13px;
+    }
+
+    p:nth-child(2){
+      margin-top: 87px;
+    }
+
+    section {
+      margin-top: 13px;
+      margin-bottom: 87px;
+    }
+
+    header {
+      margin-top: 87px;
+    }
+
+    footer {
+      margin-bottom: 13px;
+    }
+
+    .empty {
+      margin: 0;
+    }
+
+    .content {
+      margin-top: 13px;
+      margin-bottom: 87px;
+    }
+  </style>
+</head>
+<body>
+<!-- 同一层相邻元素之间的边距重叠 -->
+<p>下边界范围会...</p>
+<p>...会跟这个元素的上边界范围重叠。</p>
+
+<!-- 父元素与子元素边距重叠 -->
+<section>
+  <header>上边界重叠 87</header>
+  <main></main>
+  <footer>下边界重叠 87 不能再高了</footer>
+</section>
+
+<!-- 空的块级元素本身上下边距的重叠 -->
+<p class="empty">上边界范围是 87 ...</p>
+<div class="content"></div>
+<p class="empty">... 上边界范围是 87</p>
+</body>
+</html>
