@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>文本溢出省略特性</title>
+    <style>
+      .overflow1 {
+        width: 120px;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        background-color: burlywood;
+      }
+
+      .overflow2 {
+        display: -webkit-box;
+        width: 120px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        background-color: burlywood;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+      }
+
+      .overflow3 {
+        width: 180px;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+      }
+
+      .overflow3 span {
+        display: inline-block;
+        padding: 5px;
+        background-color: purple;
+      }
+
+      .overflow4 {
+        display: -webkit-box;
+        width: 180px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        -webkit-line-clamp: 1;
+        -webkit-box-orient: vertical;
+      }
+
+      .overflow4 span {
+        display: inline-block;
+        padding: 5px;
+        background-color: purple;
+      }
+    </style>
+  </head>
+  <body>
+    <h3>1. 单行文本省略</h3>
+    <div class="overflow1">Text Overflow Ellipsis Feature</div>
+    <h3>2. 多行文本省略</h3>
+    <div class="overflow2">
+      Text Overflow Ellipsis Feature, Text Overflow Ellipsis Feature, Text Overflow Ellipsis Feature
+    </div>
+    <h3>3. 超长文本整块省略</h3>
+    <div class="overflow3">
+      <span>FE</span>
+      <span>UI</span>
+      <span>UX Designer</span>
+      <span>前端工程师</span>
+    </div>
+    <h3>4. 兼容 IOS 整块超长溢出省略</h3>
+    <div class="overflow4">
+      <span>FE</span>
+      <span>UI</span>
+      <span>UX Designer</span>
+      <span>前端工程师</span>
+    </div>
+  </body>
+</html>
