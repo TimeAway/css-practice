@@ -1,0 +1,148 @@
+.text-long-shadow {
+  color: #de6229;
+  font-size: 50px;
+  text-shadow: 0px 0px hsl(14, 100%, 30%), 0px 0px hsla(14, 99%, 30%, 0.9998),
+    1px 1px hsla(14, 98%, 30%, 0.9996), 2px 2px hsla(14, 97%, 30%, 0.9994),
+    3px 3px hsla(14, 96%, 30%, 0.9992), 4px 4px hsla(14, 95%, 30%, 0.999),
+    5px 5px hsla(14, 94%, 30%, 0.9988), 6px 6px hsla(14, 93%, 30%, 0.9986),
+    7px 7px hsla(14, 92%, 30%, 0.9984), 8px 8px hsla(14, 91%, 30%, 0.9982),
+    9px 9px hsla(14, 90%, 30%, 0.998), 10px 10px hsla(14, 89%, 30%, 0.9978),
+    11px 11px hsla(14, 88%, 30%, 0.9976), 12px 12px hsla(14, 87%, 30%, 0.9974),
+    13px 13px hsla(14, 86%, 30%, 0.9972), 14px 14px hsla(14, 85%, 30%, 0.997),
+    15px 15px hsla(14, 84%, 30%, 0.9968), 16px 16px hsla(14, 83%, 30%, 0.9966),
+    17px 17px hsla(14, 82%, 30%, 0.9964), 18px 18px hsla(14, 81%, 30%, 0.9962),
+    19px 19px hsla(14, 80%, 30%, 0.996), 20px 20px hsla(14, 79%, 30%, 0.9958),
+    21px 21px hsla(14, 78%, 30%, 0.9956), 22px 22px hsla(14, 77%, 30%, 0.9954),
+    23px 23px hsla(14, 76%, 30%, 0.9952), 24px 24px hsla(14, 75%, 30%, 0.995),
+    25px 25px hsla(14, 74%, 30%, 0.9948), 26px 26px hsla(14, 73%, 30%, 0.9946),
+    27px 27px hsla(14, 72%, 30%, 0.9944), 28px 28px hsla(14, 71%, 30%, 0.9942),
+    29px 29px hsla(14, 70%, 30%, 0.994);
+}
+.text-3d-shadow {
+  color: #6c6c6c;
+  font-size: 50px;
+  text-shadow: 0 -1px 0 #fff, 0 1px 0 #2e2e2e, 0 2px 0 #2c2c2c, 0 3px 0 #2a2a2a, 0 4px 0 #282828,
+    0 5px 0 #262626, 0 6px 0 #242424, 0 7px 0 #222, 0 8px 0 #202020, 0 9px 0 #1e1e1e,
+    0 10px 0 #1c1c1c, 0 11px 0 #1a1a1a, 0 12px 0 #181818, 0 13px 0 #161616, 0 14px 0 #141414,
+    0 15px 0 #121212;
+}
+.text-insert-shadow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 300px;
+  height: 200px;
+  color: #202020;
+  font-size: 35px;
+  letter-spacing: 0.1em;
+  text-shadow: -1px -1px 1px #111, 2px 2px 1px #363636;
+  background-color: #2d2d2d;
+}
+.neon-bg {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 300px;
+  height: 200px;
+  color: #fff;
+  font-size: 60px;
+  background-color: #000;
+}
+.neon {
+  text-shadow: 0 0 10px #0ebeff, 0 0 20px #0ebeff, 0 0 50px #0ebeff, 0 0 100px #0ebeff,
+    0 0 200px #0ebeff;
+}
+.neon-hover:hover span {
+  animation: flicker linear 1s forwards;
+}
+.neon-hover:hover .neon-e {
+  animation-delay: 0.2s;
+}
+.neon-hover:hover .neon-o {
+  animation-delay: 0.4s;
+}
+.neon-hover:hover .neon-n {
+  animation-delay: 0.6s;
+}
+.bg-clip {
+  color: transparent;
+  font-weight: bold;
+  font-size: 30px;
+  background: linear-gradient(180deg, blue, yellow, pink, deeppink);
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+.text-highlight {
+  position: relative;
+  margin: auto;
+  font-size: 5rem;
+  line-height: 1;
+  white-space: nowrap;
+  word-spacing: 0.2em;
+  background-color: #e8a95b;
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+.text-highlight::after {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: linear-gradient(
+    120deg,
+    transparent 0%,
+    transparent 6rem,
+    white 11rem,
+    transparent 11.15rem,
+    transparent 15rem,
+    rgba(255, 255, 255, 0.3) 20rem,
+    transparent 25rem,
+    transparent 27rem,
+    rgba(255, 255, 255, 0.6) 32rem,
+    white 33rem,
+    rgba(255, 255, 255, 0.3) 33.15rem,
+    transparent 38rem,
+    transparent 40rem,
+    rgba(255, 255, 255, 0.3) 45rem,
+    transparent 50rem,
+    transparent 100%
+  );
+  background-repeat: no-repeat;
+  background-size: 150% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  animation: move 3s linear infinite;
+  content: attr(data-text);
+}
+.text-mask {
+  -webkit-mask: radial-gradient(circle at 50% 0%, #000, transparent 30%);
+  mask: radial-gradient(circle at 50% 0%, #000, transparent 30%);
+}
+@keyframes move {
+  0% {
+    background-position: 50% 0;
+  }
+  100% {
+    background-position: -190% 0;
+  }
+}
+@keyframes flicker {
+  0% {
+    color: #333;
+  }
+  5%,
+  15%,
+  25%,
+  30%,
+  100% {
+    color: #fff;
+    text-shadow: 0 0 5px #0ebeff, 0 0 10px #0ebeff, 0 0 20px #0ebeff, 0 0 50px #0ebeff;
+  }
+  10%,
+  20% {
+    color: #333;
+    text-shadow: none;
+  }
+}
+/*# sourceMappingURL=006.text-animation-effects.css.map */
